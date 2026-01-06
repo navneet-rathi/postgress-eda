@@ -10,8 +10,7 @@
         channels:
           - ops_alerts
   rules:
-    - name: R1 - Heard "Hello!"
-      condition: event.payload.message == "Hello!"
+    - name: Capture all other events from this source
+      condition: event is defined
       action:
-        debug:
-          msg: "You said, '{{ event.payload.message }}'. Is it me you're looking for?"
+        debug:  
