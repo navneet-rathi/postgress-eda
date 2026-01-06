@@ -13,6 +13,5 @@
           - ops_alerts
   rules:
     - name: Capture all other events from this source
-      condition: event is defined
       action:
         debug:  
