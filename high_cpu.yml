@@ -1,0 +1,9 @@
+---
+- name: investigate high cpu usage
+  hosts: localhost
+  tasks:
+    - name: Print high CPU usage message
+      ansible.builtin.debug:
+        msg: "High CPU usage detected! Investigating..."
+
+        
