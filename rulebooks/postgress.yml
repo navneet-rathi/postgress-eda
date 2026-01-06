@@ -1,5 +1,5 @@
 ---
-- name: Respond to webhook POST
+- name : Respond to webhook POST
   hosts: all
   sources:
     - ansible.eda.pg_listener:
