@@ -1,6 +1,6 @@
 ---
 - name: Respond to webhook POST
-  hosts: all
+  hosts: localhost
   sources:
     - ansible.eda.pg_listener:
         postgres_params:
