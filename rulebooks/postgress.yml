@@ -27,4 +27,10 @@
         debug:
           msg: "enabled on: {{ event.meta.hosts }}"
 
+    - name: R3 - High CPU usage detected
+      condition: true
+      action:
+        debug:
+      
+
     
