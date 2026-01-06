@@ -12,6 +12,19 @@
         channels:
           - ops_alerts
   rules:
-    - name: Capture all other events from this source
+    - name: R1 - SELinux is disabled
+      condition: event.alert.labels.alertname == "selinux disabled" and event.alert.status == "firing"
       action:
-        debug:  
+        run_job_template:
+          name: Apply baseline
+          organization: Default
+          job_args:
+            limit: "{{ event.meta.hosts }}"
+
+    - name: R2 - SELinux was enabled and now its fixed
+      condition: event.alert.labels.alertname == "selinux disabled" and  event.alert.status == "resolved"
+      action:
+        debug:
+          msg: "enabled on: {{ event.meta.hosts }}"
+
+    
