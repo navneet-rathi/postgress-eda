@@ -1,0 +1,17 @@
+---
+- name: Respond to webhook POST
+  hosts: all
+  sources:
+    - ansible.eda.pg_listener:
+        postgres_params:
+          host: 192.168.64.41
+          port: 5432
+          dbname: awx
+        channels:
+          - ops_alerts
+  rules:
+    - name: R1 - Heard "Hello!"
+      condition: event.payload.message == "Hello!"
+      action:
+        debug:
+          msg: "You said, '{{ event.payload.message }}'. Is it me you're looking for?"
