@@ -12,25 +12,13 @@
         channels:
           - ops_alerts
   rules:
-    - name: R1 - SELinux is disabled
-      condition: event.alert.labels.alertname == "selinux disabled" and event.alert.status == "firing"
-      action:
-        run_job_template:
-          name: Apply baseline
-          organization: Default
-          job_args:
-            limit: "{{ event.meta.hosts }}"
-
-    - name: R2 - SELinux was enabled and now its fixed
-      condition: event.alert.labels.alertname == "selinux disabled" and  event.alert.status == "resolved"
-      action:
-        debug:
-          msg: "enabled on: {{ event.meta.hosts }}"
-
-    - name: R3 - High CPU usage detected
+    - name: R1 - High CPU usage detected
       condition: true
       action:
-        debug:
+        run_job_template:
+          name: Investigate_High_CPU
+          organization: Default
+
       
 
     
