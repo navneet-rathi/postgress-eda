@@ -7,6 +7,8 @@
           host: 192.168.64.41
           port: 5432
           dbname: awx
+          user: postgres
+          password: primod123
         channels:
           - ops_alerts
   rules:
